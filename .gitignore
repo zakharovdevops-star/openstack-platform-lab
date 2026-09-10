@@ -1,0 +1,24 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+terraform/terraform.tfvars
+
+# OpenStack credentials
+clouds.yaml
+secure.yaml
+openrc.sh
+*.openrc
+
+# Ansible generated/local files
+ansible/inventory/hosts.ini
+ansible/group_vars/all.yml
+*.retry
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
