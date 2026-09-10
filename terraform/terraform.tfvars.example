@@ -1,0 +1,14 @@
+prefix                = "portfolio"
+region                = "RegionOne"
+external_network_name = "public"
+image_name            = "Ubuntu-24.04"
+flavor_name           = "m1.small"
+keypair_name          = "my-keypair"
+
+# Replace with your real administrative source range.
+# 203.0.113.0/24 is TEST-NET-3 and intentionally unusable on the public Internet.
+admin_cidr = "203.0.113.10/32"
+
+private_subnet_cidr = "10.20.0.0/24"
+dns_nameservers     = ["1.1.1.1", "8.8.8.8"]
+instance_count      = 2

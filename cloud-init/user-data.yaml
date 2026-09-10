@@ -1,0 +1,21 @@
+#cloud-config
+package_update: true
+packages:
+  - python3
+  - curl
+  - ca-certificates
+
+write_files:
+  - path: /etc/motd
+    permissions: "0644"
+    content: |
+      OpenStack Platform Lab
+      Managed by Terraform + cloud-init + Ansible.
+      Portfolio demonstration environment.
+
+runcmd:
+  - systemctl enable --now systemd-timesyncd || true
+  - mkdir -p /opt/platform-lab
+  - printf '%s\n' 'bootstrap=cloud-init' > /opt/platform-lab/bootstrap.info
+
+final_message: "OpenStack Platform Lab cloud-init completed."

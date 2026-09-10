@@ -1,0 +1,10 @@
+---
+platform_lab_packages:
+  - curl
+  - jq
+  - htop
+  - vim
+
+platform_lab_sysctl:
+  net.ipv4.tcp_syncookies: 1
+  net.ipv4.conf.all.rp_filter: 1

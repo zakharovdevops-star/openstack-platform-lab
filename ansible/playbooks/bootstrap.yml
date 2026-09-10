@@ -1,0 +1,8 @@
+---
+- name: Configure OpenStack platform lab instances
+  hosts: app
+  become: true
+  gather_facts: true
+
+  roles:
+    - common

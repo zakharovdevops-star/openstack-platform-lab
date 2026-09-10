@@ -1,0 +1,31 @@
+---
+- name: Install baseline packages
+  ansible.builtin.package:
+    name: "{{ platform_lab_packages }}"
+    state: present
+
+- name: Apply baseline sysctl settings
+  ansible.posix.sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+    reload: true
+  loop: "{{ platform_lab_sysctl | dict2items }}"
+
+- name: Create platform lab directory
+  ansible.builtin.file:
+    path: /opt/platform-lab
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Write configuration-management marker
+  ansible.builtin.copy:
+    dest: /opt/platform-lab/managed-by-ansible
+    content: |
+      role=common
+      managed_by=ansible
+    owner: root
+    group: root
+    mode: "0644"
